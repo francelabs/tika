@@ -17,6 +17,7 @@
 package org.apache.tika.parser.ocr;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -58,12 +59,18 @@ public class TesseractOCRConfig implements Serializable{
 	
 	// Maximum time (seconds) to wait for the ocring process termination
 	private int timeout = 120;
+	// TODO remove hardcode: question asked on Tika Mailing List
+	private static String datafariConfigFile = "/opt/datafari/tomcat/conf/datafari.properties";
 
 	/**
 	 * Default contructor.
 	 */
 	public TesseractOCRConfig() {
-		init(this.getClass().getResourceAsStream("TesseractOCRConfig.properties"));
+		try {
+			init(new FileInputStream(datafariConfigFile));
+		} catch (Exception e) {
+			throw new RuntimeException(String.format("Cannot read Tesseract file", new Object[0]), e);
+		}
 	}
 
 	/**

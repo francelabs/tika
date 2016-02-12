@@ -29,7 +29,7 @@
     <relativePath>../tika-parent/pom.xml</relativePath>
   </parent>
 
-  <artifactId>tika-parsers</artifactId>
+  <artifactId>datafari-tika-parsers</artifactId>
   <packaging>bundle</packaging>
   <name>Apache Tika parsers</name>
   <url>http://tika.apache.org/</url>
@@ -228,6 +228,11 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>sigrun</groupId>
+    	<artifactId>sigrun</artifactId>
+    	<version>0.3.6</version>
     </dependency>
   </dependencies>
 

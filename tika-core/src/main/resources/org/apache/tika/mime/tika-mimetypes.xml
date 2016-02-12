@@ -598,6 +598,11 @@
   <mime-type type="application/sdp">
     <glob pattern="*.sdp"/>
   </mime-type>
+  <mime-type type="application/segy">
+    <glob pattern="*.sgy"/>
+    <glob pattern="*.seg"/>
+    <glob pattern="*.segy"/>
+  </mime-type>
   <mime-type type="application/set-payment"/>
   <mime-type type="application/set-payment-initiation">
     <glob pattern="*.setpay"/>
