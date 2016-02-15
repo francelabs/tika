@@ -275,6 +275,12 @@
     <glob pattern="*.lostxml"/>
   </mime-type>
 
+  <mime-type type="text/las">
+  	<_comment>LAS format - Log ASCII Standard of the Canadian Well Logging Society (CWLS)</_comment>
+    <glob pattern="*.las"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+
   <mime-type type="application/mac-binhex40">
     <alias type="application/mac-binhex"/>
     <alias type="application/binhex"/>

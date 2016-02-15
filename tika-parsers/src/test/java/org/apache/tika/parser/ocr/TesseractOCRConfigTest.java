@@ -31,12 +31,12 @@ public class TesseractOCRConfigTest extends TikaTest {
     @Test
     public void testNoConfig() throws Exception {
         TesseractOCRConfig config = new TesseractOCRConfig();
-        assertEquals("Invalid default tesseractPath value", "", config.getTesseractPath());
-        assertEquals("Invalid default language value", "eng", config.getLanguage());
+        assertEquals("Invalid default tesseractPath value", "/opt/datafari/ocr/tesseract/bin/", config.getTesseractPath());
+        assertEquals("Invalid default language value", "eng+fra", config.getLanguage());
         assertEquals("Invalid default pageSegMode value", "1", config.getPageSegMode());
         assertEquals("Invalid default minFileSizeToOcr value", 0, config.getMinFileSizeToOcr());
-        assertEquals("Invalid default maxFileSizeToOcr value", Integer.MAX_VALUE, config.getMaxFileSizeToOcr());
-        assertEquals("Invalid default timeout value", 120, config.getTimeout());
+        assertEquals("Invalid default maxFileSizeToOcr value", 2147483647, config.getMaxFileSizeToOcr());
+        assertEquals("Invalid default timeout value", 30, config.getTimeout());
     }
 
     @Test
