@@ -57,3 +57,4 @@ org.apache.tika.parser.mat.MatParser
 org.apache.tika.parser.ocr.TesseractOCRParser
 org.apache.tika.parser.gdal.GDALParser
 org.apache.tika.parser.geo.segy.SEGYParser
+org.apache.tika.parser.geo.las.LASParser
