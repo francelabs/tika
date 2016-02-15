@@ -599,6 +599,7 @@
     <glob pattern="*.sdp"/>
   </mime-type>
   <mime-type type="application/segy">
+  	<_comment>SEG-Y format, developed by the Society of Exploration Geophysicists</_comment>
     <glob pattern="*.sgy"/>
     <glob pattern="*.seg"/>
     <glob pattern="*.segy"/>
