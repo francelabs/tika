@@ -53,7 +53,8 @@ public class LASParser extends AbstractParser {
 	private static final String LAS_MIME = "text/las";
 	private static final String LAS_DCMI_TYPE = "Dataset";
 	private static final String LAS_CHARSET = "US-ASCII";
-
+	private static final String LAS_START_DATA = "~A";
+	
 	private static final Set<MediaType> SUPPORTED_TYPES = Collections
 			.unmodifiableSet(new HashSet<MediaType>(Arrays.asList(LAS_EXT)));
 
@@ -75,8 +76,14 @@ public class LASParser extends AbstractParser {
 		metadata.set("stream_content_type", LAS_MIME);
 		metadata.set(TikaCoreProperties.FORMAT, LAS_MIME);
 		metadata.set(TikaCoreProperties.TYPE, LAS_DCMI_TYPE);
+		
 		// Content's language detection will be done by Solr update processor
-		metadata.set("content", IOUtils.toString(stream, LAS_CHARSET));
+		
+		String tmp = IOUtils.toString(stream, LAS_CHARSET);
+		
+		// Remove the data part, keep only the header of the LAS file
+		metadata.set("content", tmp.substring(0, tmp.lastIndexOf(LAS_START_DATA)));
+		
 		// File extension metadata extracted by Solr
 		// ID metadata extracted by MCF
 		// Title metadata extracted by Solr
