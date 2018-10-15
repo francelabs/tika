@@ -395,20 +395,23 @@ public class TikaResource {
                              ContentHandler handler, Metadata metadata, ParseContext parseContext) throws IOException {
 
         checkIsOperating();
-
+        String fileName = metadata.get(TikaMetadataKeys.RESOURCE_NAME_KEY);
         long taskId = SERVER_STATUS.start(ServerStatus.TASK.PARSE,
-                metadata.get(Metadata.RESOURCE_NAME_KEY));
+                fileName);
+
         try {
             parser.parse(inputStream, handler, metadata, parseContext);
+            logger.debug("text extraction from file : "+fileName);
         } catch (SAXException e) {
             throw new TikaServerParseException(e);
         } catch (EncryptedDocumentException e) {
-            logger.warn("{}: Encrypted document", path, e);
+            logger.warn("{}: Encrypted document ({})", path, fileName, e);
             throw new TikaServerParseException(e);
         } catch (Exception e) {
-            logger.warn("{}: Text extraction failed", path, e);
+            logger.warn("{}: Text extraction failed ({})", path, fileName, e);
             throw new TikaServerParseException(e);
         } catch (OutOfMemoryError e) {
+            logger.warn("{}: OOM ({})", path, fileName, e);
             SERVER_STATUS.setStatus(ServerStatus.STATUS.ERROR);
             throw e;
         } finally {
